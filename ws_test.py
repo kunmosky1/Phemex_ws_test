@@ -18,7 +18,7 @@ class WebsocketConnection(object):
             if time.time() - last_ping_time >= 30:
                 last_ping_time = time.time()
                 try:
-                    ws.send('')
+                    ws.send(json.dumps({"id": 1, "method": "server.ping", "params": []}))
                     print('Phemex send ping.')
                 except Exception as e:
                     print('Phemex ping error!')
